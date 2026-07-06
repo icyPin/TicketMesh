@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: inventory-service
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ticket_db
+    username: postgres
+    password: mysecretpassword
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
