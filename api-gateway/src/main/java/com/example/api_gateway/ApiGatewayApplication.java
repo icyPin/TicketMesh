@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayApplication.class,"--server.port=8080");
+		SpringApplication.run(ApiGatewayApplication.class,"--server.port=8083");
 	}
 
 }

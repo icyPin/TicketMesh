@@ -4,10 +4,7 @@ package com.example.inventory_service.controller;
 import com.example.inventory_service.service.InventoryService;
 import lombok.Data;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -35,6 +32,16 @@ public class InventoryController {
         }
         else
             return ResponseEntity.status(409).body(false);
+    }
+
+    @PostMapping("/tickets/{ticketId}/confirm-payment")
+    public ResponseEntity<String> confirm(@PathVariable Long ticketId){
+        String message = inventoryService.confirmPayment(ticketId);
+        if(!message.isEmpty()){
+            return ResponseEntity.ok(message);
+        }
+        else
+            return ResponseEntity.status(404).body("Ticket not found");
     }
 
 }

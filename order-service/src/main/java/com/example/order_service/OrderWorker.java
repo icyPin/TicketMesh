@@ -1,7 +1,7 @@
 package com.example.order_service;
 
 
-import com.example.order_service.Clients.ReserveRequest;
+import com.example.order_service.model.ReserveRequest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -43,7 +43,9 @@ public class OrderWorker {
                                 " Requested Seat: "+ seatNumber +
                                 " out of the queue. Starting Processes..."
                 );
+
                 System.out.println("Contacting Inventory Service to lock a seat...");
+
                 Boolean success = restClient.post()
                         .uri("http://localhost:8082/api/inventory/reserve")
                         .body(request)
@@ -56,7 +58,7 @@ public class OrderWorker {
                             "for User: "+ userId
                     );
                 } else {
-                    System.out.println(" FAILED! The selected seat is already locked.");
+                    System.out.println(" failed! The selected seat is already locked.");
                 }
                 System.out.println("Contacting Payment Service...");
                 // boolean paymentSuccess = paymentClient.processPayment(userId);
