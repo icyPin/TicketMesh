@@ -1,4 +1,4 @@
-package com.example.order_service.Clients;
+package com.example.order_service.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

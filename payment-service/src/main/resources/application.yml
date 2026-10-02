@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: payment-service
+
+stripe:
+  api:
+    key: 
+  webhook:
+    secret: whsec_2b253f369ebe5fbc8337a7b14a30354f164d59306796d9324bca1f251b9a06bb
